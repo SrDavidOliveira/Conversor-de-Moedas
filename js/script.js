@@ -10,6 +10,9 @@ function convertValues() {
   const dolarToday = 4.97
   const euroToday = 5.33
   const euroDolar = 1.07
+  const euroLibra = 1.17
+  const libraToday = 6.24
+  const libraDolar = 1.26
 
   if (currencyMoeda.value == "real" && currencySelect.value == "dolar") {
     currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
@@ -27,6 +30,17 @@ function convertValues() {
       style: "currency",
       currency: "EUR"
     }).format(inputCurrencyValues / euroToday)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    }).format(inputCurrencyValues)
+  }
+
+  if (currencyMoeda.value == "real" && currencySelect.value == "libra") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues / libraToday)
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL"
@@ -66,6 +80,17 @@ function convertValues() {
     }).format(inputCurrencyValues)
   }
 
+  if (currencyMoeda.value == "dolar" && currencySelect.value == "libra") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues / libraDolar)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(inputCurrencyValues)
+  }
+
   if (currencyMoeda.value == "dolar" && currencySelect.value == "dolar") {
     currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -99,6 +124,17 @@ function convertValues() {
     }).format(inputCurrencyValues)
   }
 
+  if (currencyMoeda.value == "euro" && currencySelect.value == "libra") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues / euroLibra)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR"
+    }).format(inputCurrencyValues)
+  }
+
   if (currencyMoeda.value == "euro" && currencySelect.value == "euro") {
     currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
       style: "currency",
@@ -107,6 +143,50 @@ function convertValues() {
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
       style: "currency",
       currency: "EUR"
+    }).format(inputCurrencyValues)
+  }
+
+  if (currencyMoeda.value == "libra" && currencySelect.value == "real") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    }).format(inputCurrencyValues * libraToday)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues)
+  }
+
+  if (currencyMoeda.value == "libra" && currencySelect.value == "dolar") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(inputCurrencyValues / libraDolar)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues)
+  }
+
+  if (currencyMoeda.value == "libra" && currencySelect.value == "euro") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR"
+    }).format(inputCurrencyValues * euroLibra)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues)
+  }
+
+  if (currencyMoeda.value == "libra" && currencySelect.value == "libra") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
+    }).format(inputCurrencyValues)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "GBP"
     }).format(inputCurrencyValues)
   }
 
@@ -131,6 +211,11 @@ function changeCurrencyMoeda() {
     currencyimgMoeda.src = "./assets/real.png"
   }
 
+  if (currencyMoeda.value == "libra") {
+    currencyNameMoeda.innerHTML = "Libra"
+    currencyimgMoeda.src = "./assets/libra.png"
+  }
+
   convertValues()
 }
 
@@ -151,6 +236,11 @@ function changeCurrency() {
   if (currencySelect.value == "real") {
     currencyName.innerHTML = "Real"
     currencyimg.src = "./assets/real.png"
+  }
+
+  if (currencySelect.value == "libra") {
+    currencyName.innerHTML = "Libra"
+    currencyimg.src = "./assets/libra.png"
   }
 
   convertValues()
